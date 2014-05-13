@@ -1,0 +1,23 @@
+div {
+    &.header {    
+        ul {
+            li {       
+                &.item1 {
+                    background: url('../images/logo.png') 0 0 no-repeat;
+                }
+            }
+        }
+    }
+    
+    &.footer {        
+        div {            
+            &.column {
+                a {
+                    &.logo {
+                        background: url('../images/logo.png') 0 0 no-repeat;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,408 @@
+body {
+    color: $fontcolour;
+    font-size: 87.5%;
+    font-family: $bodyfont;
+    line-height: 1.429;
+}
+
+h1, h2, h3, h4, h5, h6, label, div.componentheading {
+    font-family: $headingfont;
+}
+
+label {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.95em;
+}
+
+fieldset {
+    margin: 0.7em 0 1em 0;
+}
+
+form {
+    #form-login-username, #form-login-password {
+        input {
+            padding: 0.2em 4px;
+            width: 190px;
+        }
+    }
+    
+    button, input.button {
+        padding: 0.5em 0;
+        width: 200px;
+        border: none;
+        background: $mjgreen;
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: $headingfont;
+        
+        &:hover {
+            background: $mjred;
+        }
+    }
+    
+    &#form-login {
+        div {
+            margin: 0 0 0.8em 0;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.4em;
+            font-family: $headingfont;
+            
+            input.button {
+                font-size: 0.7em;
+            }
+        }
+    }
+    
+    &[name=userform] {
+
+        table {
+            margin: 1.4em 0 0.9em 0;
+            width: auto;
+            
+            td {
+                padding: 0 1em 0.9em 0;
+                width: auto;
+            }
+        }
+        
+        input.inputbox, input.validate-email {
+            padding: 0.2em 4px;
+            width: 300px;
+        }
+    }
+}
+
+input {
+    &.inputbox, &.validate-email {
+        border: 1px solid $mjgreen;
+        font-size: 1.2em;
+        font-family: $bodyfont;
+    }
+    
+    &.validate-email {
+        padding: 0.2em 4px;
+        width: 190px;        
+    }
+    
+    &.invalid {
+        border: 2px solid $mjred;
+        background: $mjlightgreen;
+    }
+    
+    &:focus {
+        border: 1px solid $fontcolour;
+    }
+}
+
+select {
+    border: 1px solid $mjgreen;
+    font-size: 1.1em;
+    font-family: $bodyfont;
+}
+
+h1, div.componentheading {
+    margin: 0 0 0.3em 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.15em;
+    line-height: 1;
+}
+
+p {
+    margin: 0 0 0.8em 0;
+}
+
+
+ul, ol {
+    margin: 0 0 0.8em 0;
+    
+    li {
+        margin: 0 0 0.3em 1.2em;
+        list-style-position: inside;
+    }
+}
+
+a {
+    color: $linkcolour;
+    text-decoration: none;
+    
+    &:hover {
+        color: $hovercolour;
+    }
+}
+
+table {
+    width: auto;
+    
+    &.contentpane {
+        display: block;
+        
+        td {
+            display: block;
+            padding: 0 0 0.9em 0;
+            height: auto;
+            
+            &:first-child {
+                padding: 0 0 0.3em 0;
+            }
+        }
+    }
+}
+
+
+div {
+    &.inner-wrapper {
+        @include transition(width 0.5s ease-in-out);
+        margin: 0 auto;
+        width: $cols13;
+        
+        @media screen and (min-width: $cols14) {
+            width: $cols14;
+        }
+        
+        @media screen and (min-width: $cols15) {
+            width: $cols15;
+        }
+        
+        @media screen and (min-width: $cols15) {
+            width: $cols16;
+        }
+    }
+    
+    &.header {
+        @include single-box-shadow(rgba(224, 224, 224, 0.8), 3px, 3px);
+        @include transition(height 0.5s ease-in-out);
+        position: fixed;
+        z-index: 9999;
+        width: 100%;
+        height: 96px;
+        border-top: 4px solid $mjred;
+        background: $bgcolour;
+        
+        body.short & {
+            height: 60px;
+            border-top: 2px solid $mjred;
+        }
+        
+        ul {
+            padding: $gutter 0 0 0;
+            font-family: $headingfont;
+            
+            body.short & {
+                padding: $gutter/2 0 0 0;
+            }
+        
+            li {
+                @include transition(all 0.5s ease-in-out);
+                float: left;
+                margin: 0 70px 0 0;
+                height: 51px;
+                list-style: none;
+                
+                body.short & {
+                    height: 38px;
+                }
+                
+                &.item1 {
+                    margin-left: 17px;
+                    width: 188px;
+                    background: url('../images/logo.svg') 0 0 no-repeat;
+                    background-size: 100% 100%;
+                    
+                    body.short & {
+                        width: 141px;
+                    }
+                    
+                    a {
+                        overflow: hidden;
+                        text-indent: -1000px;
+                    }
+                }
+                
+                a {
+                    @include transition(all 0.5s ease-in-out);
+                    display: block;
+                    padding: 31px 0 0 0;
+                    height: 20px;
+                    color: $fontcolour;
+                    vertical-align: baseline;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 1.1em;
+                    
+                    body.short & {
+                        padding: 18px 0 0 0;
+                    }
+                    
+                    &:hover {
+                        color: $hovercolour;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.sidebar {
+        float: left;
+        margin: 0;
+        padding: 100px 0 50px 0;
+        width: $cols4;
+
+        ul {
+            margin: 2em 0 0 0;
+        }
+        
+        li {
+            margin: 0;
+            padding: 0;
+            width: 260px;
+            border-bottom: 1px dotted $mjgreen;
+            list-style: none;
+            text-transform: uppercase;
+            
+            &:first-child {
+                border-top: 1px dotted $mjgreen;
+            }
+            
+            &.active {
+                a {
+                    background-color: $mjlightgreen;
+                    background-position: 243px 50%;
+                    color: $mjgreen; 
+                }
+            }
+            
+            a {
+                display: block;
+                padding: 10px 20px 10px 10px;
+                background: url('../images/linkarrows.png') -230px 50% no-repeat;
+                
+                &:hover {
+                    background-color: $mjlightgreen;
+                    background-position: 243px 50%;
+                    color: $mjgreen;
+                }
+            }
+        }
+    }
+    
+    &.content {
+        div.with-sidebar & {
+            margin: 0 0 0 $cols4 + 1em;
+        }
+        
+        div {
+            &.componentheading {
+                padding: 60px 0 0 0;
+            }
+        }
+    }
+    
+    &.footer {
+        clear: both;
+        margin: 50px 0;
+        border-top: 1px solid $fontcolour;
+        border-bottom: 1px solid $fontcolour;
+        
+        div {
+            &.container {
+                padding: 50px 0;
+            }
+            
+            &.column {
+                @include inline-block;
+                margin: 0 30px 0 0;
+                width: 270px;
+                vertical-align: top;
+                
+                a {
+                    &.logo {
+                        display: block;
+                        overflow: hidden;
+                        width: 188px;
+                        height: 51px;
+                        background: url('../images/logo.svg') 0 0 no-repeat;
+                        background-size: 100% 100%;
+                        text-indent: -1000px;
+                    }
+                    
+                    &.readmore {
+                        display: block;
+                        padding: 10px 0 0 0;
+                        text-transform: uppercase;
+                        font-size: .95em;
+                    }
+                }
+            }
+            
+            &.address {
+                padding: 25px 0 0 0;
+                font-weight: 600;
+                
+                h3 {
+                    padding: 0 0 15px 0;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    font-size: 1.05em;
+                }
+                
+                strong {
+                    float: left;
+                    width: 15px;;
+                }
+                
+                p {
+                    font-size: 0.95em;
+                    line-height: 2;
+                }
+            }
+        }
+    }
+    
+    &.body {
+        padding: 96px 0 0 0;
+    }
+    
+    &.tool-tip {
+        padding: 0.5em 0.8em;
+        background: $bgcolour;
+    }
+}
+
+body.homepage {
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    table {    
+        &.contentpaneopen {
+            width: 100%;
+            
+            td {
+                height: 450px;
+                border-bottom: 1px solid $bgcolour;
+                background: url('../images/homepage.jpg') top left no-repeat;
+                
+                &.buttonheading {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    div {
+        &.sidebar {
+            margin: 0 0 0 70px;
+        }
+        
+        &.with-sidebar {
+            div.content {
+                margin: 0 0 0 $cols5 + 1em;
+            }
+        }
+    }
+}

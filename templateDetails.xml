@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN"
+"http://dev.joomla.org/xml/1.5/template-install.dtd">
+<install version="1.5" type="template">
+    <name>Martin Jenkins 2014</name>
+    <creationDate>5/2014</creationDate>
+    <author>Triptech Ltd</author>
+    <authorEmail>david@triptech.net</authorEmail>
+    <authorUrl>http://www.triptech.net</authorUrl>
+    <copyright>Martin Jenkins Ltd</copyright>
+    <license>GNU GPLv3</license>
+    <version>1.0.0</version>
+    <description>Joomla theme for the 2014 refresh of the Martin Jenkins website.</description>
+    <files>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>css/template.css</filename>
+    </files>
+    <positions>
+        <position>left</position>
+        <position>top</position>
+        <position>footer</position>
+    </positions>
+</install>
