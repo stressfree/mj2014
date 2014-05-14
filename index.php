@@ -32,7 +32,7 @@ xhtml1/DTD/xhtml1-transitional.dtd">
                     <jdoc:include type="modules" name="left" />
                 </div>
                 <?php endif; ?>
-                <div class="content">
+                <div id="mjcontent" class="content">
                     <jdoc:include type="component" />
                 </div>
             </div>

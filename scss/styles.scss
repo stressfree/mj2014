@@ -6,7 +6,8 @@ $mjgreen: #54b3ab;
 $mjlightgreen: #f4fafa;
 $fontcolour: #1c1d1b;
 $white: #fff;
-$linkcolour: #54b3ab;
+$linkcolour: $mjgreen;
+$contentlinkcolour: #1c8e8c;
 $hovercolour: $mjred;
 $bgcolour: #fff;
 $selectcolour: #b4d5ff;
@@ -17,8 +18,10 @@ $selectcolour: #b4d5ff;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 
+@import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "compass/css3/inline-block";
+@import "compass/css3/text-shadow";
 @import "compass/css3/transition";
 
 @import "core";
