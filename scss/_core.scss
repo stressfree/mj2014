@@ -176,6 +176,7 @@ a {
 
 table {
     width: auto;
+    border-collapse: collapse;
     
     &.contentpane {
         display: block;
@@ -466,13 +467,18 @@ div {
         
         div {
             background: $bgcolour;
+            
+            &#pf_panel_quicklink_project {
+                margin: 5px 0;
+            }
         }
         
         select {
+            @include border-radius(0);
+            @include box-shadow(none);
             border: 1px solid $mjgreen;
             background: none;
             font-size: 1em;
-            @include border-radius(0);
         }
         
         .pf_welcome {
@@ -480,21 +486,227 @@ div {
             color: $fontcolour;
         }
         
-        li.section {
+        ul.submenu {
+            height: auto;
+        }
+        
+        li.section, li.active_section {
             a {
                 @include text-shadow(none);
-                color: $linkcolour;
+                padding: 0.4em 1em;
+                border: none;
+                color: $fontcolour;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 0.875em;
                 font-family: $headingfont;
+                line-height: 1.4;
                 
                 &:hover {
-                    color: $hovercolour;  
+                    background: $mjlightgreen;
+                    color: $hovercolour;
+                }
+                
+                span {
+                    padding: 0.3em 0.5em;
+                    background: none;
                 }
             }
         }
+        
+        li.active_section {
+            a.pf_nav {
+                background: $mjgreen;
+                
+                &:hover {
+                    color: $white;
+                }
+            }
+        }  
+    }
+    
+    &#pf-wrapper, &#pf-wrapper .moduletable {
+        border: none;
+        font-size: 1em;
+        font-family: $bodyfont;
+        line-height: 1.4;
     }
     
     &#pf-wrapper {
-        border: none;
+        
+        a {
+            color: $linkcolour!important;
+            
+            &:hover {
+                color: $hovercolour!important;
+            }
+        }
+        
+        #pf-top, #pf-main, .pf-panel-body {
+            padding: 0;
+        }
+        
+        #pf_panel_nav_section_subnav {
+            div.pf_navigation {
+                margin: 0;
+                height: auto;
+                
+                &:first-child {
+                    height: 1.9em;
+                }
+            
+                &:first-of-type {
+                    @include box-shadow(none);
+                    @include border-radius(0);
+                    border: none;
+                    background: $mjgreen;
+                    
+                    li {
+                        a {
+                            @include border-radius(0);
+                            @include text-shadow(none);
+                            padding: 0.4em 1em;
+                            border: none;
+                            text-transform: uppercase;
+                            font-weight: 400;
+                            font-size: 0.875em;
+                            font-family: $headingfont;
+                            line-height: 1.4;
+                            
+                            &:hover {
+                                @include border-radius(0);
+                                background: none;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        .button, .submitbutton, .pf_button, .btn a, 
+        .pf_filter .pf_nav, #editor-xtd-buttons a {
+            @include border-radius(0);
+            @include text-shadow(none);
+            @include box-shadow(none);
+            border: none;
+            background: $mjgreen;
+            color: $white!important;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: $headingfont;
+            
+            &:hover {
+                border: none;
+                background: $mjred;
+                color: $white!important;
+            }
+        }
+        
+        #pf_panel_nav_section li a:hover, .pf_table th.title,
+        .pf-panel h3, #pf-body .moduletable h3, #pf-sidebar .return-list a:hover {
+            background-color: $mjlightgreen;
+        }
+        
+        .pf-wizard {
+            @include box-shadow(none);
+            margin: 0 0 1.6em 0;
+            padding: 1.5em 0 0 0;
+            color: $fontcolour;
+            
+            h3 {
+                font-size: 1.3em;
+                line-height: 1.4;
+            }
+            
+            p {
+                font-size: 1em;
+                line-height: 1.4;
+            }
+        }
+        
+        .pf_table {
+            border-collapse: collapse;
+            
+            th.title {
+                @include box-shadow(none);
+                font-weight: 400;
+            }
+        }
+        
+        #pf_panel_cp_events .pf_table td:hover {
+            @include box-shadow(none);
+            background: $mjlightgreen;
+        }
+        
+        dl.tabs {
+            height: auto;
+            border: none;
+            background: none;
+            
+            dt {
+                @include text-shadow(none);
+                color: $linkcolour;
+                
+                &.open {
+                    border: 1px solid $fontcolour;
+                    border-bottom: none;
+                    color: $fontcolour;
+                }
+            }
+        }
+        
+        div.current {
+            border-top: 1px solid $fontcolour;
+        }
+        
+        table.admintable {
+            td {
+                padding: 0.4em 0.4em 0.4em 0;
+                
+                &.key {
+                    padding: 0.6em 0.6em 0 0;
+                    color: $fontcolour;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                    font-weight: 700;
+                    font-size: 0.875em;
+                    font-family: $headingfont;
+                }
+            }
+        }
+        
+        input[type=text], input[type=password], textarea, select {
+            border: 1px solid $mjgreen;
+            font-size: 1em;
+            font-family: $bodyfont;
+            
+            &:active {
+                border: 1px solid $fontcolour;
+            }
+        }
+        
+        input[type=text], input[type=password], textarea {
+            padding: 0.2em 4px;
+        }
+        
+        input[type=checkbox], input[type=radio] {
+            border: none;
+        }
+        
+        fieldset {
+            @include border-radius(3px);
+            margin: 0.7em 0 1em 0;
+            padding: 0.4em 0.8em;
+            border: 1px solid $mjgreen;
+            
+            legend {
+                margin: 0 0 0.6em 0;
+                padding: 0 0.6em;
+                background: $bgcolour;
+                font-size: 0.875em;
+            }
+        }
     }
     
     &.footer {
