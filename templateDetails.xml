@@ -17,6 +17,7 @@
         <filename>css/template.css</filename>
     </files>
     <positions>
+        <position>breadcrumbs</position>
         <position>left</position>
         <position>top</position>
         <position>footer</position>

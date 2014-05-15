@@ -1,4 +1,4 @@
-function removeStyles(el) {
+function mjRemoveStyles(el) {
     if (el.getAttribute("style")) {        
         if (el.getAttribute("style").toUpperCase().indexOf("DISPLAY") < 0) {
             el.removeAttribute('style');
@@ -8,15 +8,13 @@ function removeStyles(el) {
     if(el.childNodes.length > 0) {
         for(var child in el.childNodes) {
             if(el.childNodes[child].nodeType === 1) {
-                removeStyles(el.childNodes[child]);
+                mjRemoveStyles(el.childNodes[child]);
             }
         }
     }
 }
 
-var $loadedBodyClass = document.getElementById("mjbody").className;
-
-window.addEventListener("scroll", function(e) {
+function mjScrollEvent(e) {
     var $pos = document.body.scrollTop || document.documentElement.scrollTop;
     var $body = document.getElementById("mjbody");
     
@@ -25,9 +23,18 @@ window.addEventListener("scroll", function(e) {
     } else {
         $body.className = $loadedBodyClass;
     }
-});
+}
 
-removeStyles(document.getElementById("mjcontent"));
+var $loadedBodyClass = document.getElementById("mjbody").className;
+
+if (!window.addEventListener) {
+    window.attachEvent("onscroll", mjScrollEvent);
+}
+else {
+    window.addEventListener("scroll", mjScrollEvent);
+}
+
+mjRemoveStyles(document.getElementById("mjcontent"));
 
 var $allParas = document.getElementById("mjcontent").getElementsByTagName('p');
 

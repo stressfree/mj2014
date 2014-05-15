@@ -6,7 +6,7 @@ xhtml1/DTD/xhtml1-transitional.dtd">
 ?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if IE 8]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<
 ?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"><![endif]-->
-<!--[if IE 9]><html class="ie ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<
+<!--[if IE 9]><html class="ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<
 ?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if gt IE 9]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<
 ?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"><!--<![endif]-->
@@ -33,6 +33,9 @@ xhtml1/DTD/xhtml1-transitional.dtd">
                 </div>
                 <?php endif; ?>
                 <div id="mjcontent" class="content">
+                    <div class="breadcrumbs">
+                        <jdoc:include type="modules" name="breadcrumbs" />
+                    </div>
                     <jdoc:include type="component" />
                 </div>
             </div>

@@ -1,6 +1,8 @@
 $bodyfont: 'Open Sans', Arial, sans-serif;
 $headingfont: Lato, Arial, sans-serif;
 
+$lineheight: 1.429;
+
 $mjred: #cf163f;
 $mjgreen: #54b3ab;
 $mjlightgreen: #f4fafa;
@@ -11,6 +13,11 @@ $contentlinkcolour: #1c8e8c;
 $hovercolour: $mjred;
 $bgcolour: #fff;
 $selectcolour: #b4d5ff;
+
+$eventcolour: #ccdbd6;
+$projectcolour: #7ad6c3;
+$milestonecolour: #f1a19a;
+$taskcolour: #e1c3d8;
 
 
 @import "frameless";
@@ -25,7 +32,3 @@ $selectcolour: #b4d5ff;
 @import "compass/css3/transition";
 
 @import "core";
-
-html.ie {
-    @import "ie";
-}

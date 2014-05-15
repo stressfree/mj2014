@@ -2,7 +2,7 @@ body {
     color: $fontcolour;
     font-size: 100%;
     font-family: $bodyfont;
-    line-height: 1.429;
+    line-height: $lineheight;
 }
 
 h1, h2, h3, h4, h5, h6, label, div.componentheading {
@@ -107,6 +107,10 @@ input {
     &:focus {
         border: 1px solid $fontcolour;
     }
+    
+    &[type=checkbox], &[type=radio] {
+        border: none!important;
+    }
 }
 
 select {
@@ -181,13 +185,25 @@ table {
     &.contentpane {
         display: block;
         
-        td {
+        tr, td {
             display: block;
+        }
+        
+        td {
             padding: 0 0 0.9em 0;
             height: auto;
+            vertical-align: baseline;
             
             &:first-child {
                 padding: 0 0 0.3em 0;
+            }
+        }
+        
+        html.ie &, html.ie9 & {
+            margin: 0 0 0.4em 0;
+                    
+            td:first-child {
+                width: 20%;
             }
         }
     }
@@ -246,6 +262,11 @@ div {
             margin: 0 auto;
             width: $cols15;
         }
+        
+        html.ie & {
+            padding: 0;
+            width: $cols12;
+        }
     }
     
     &.header {
@@ -290,11 +311,24 @@ div {
                     
                     body.short & {
                         width: 141px;
+                        height: 38px;
                     }
                     
                     a {
                         overflow: hidden;
                         text-indent: -1000px;
+                    }
+                    
+                    html.ie9 body.short & {
+                        background-size: 140px 38px;
+                    }
+                    
+                    html.ie & {
+                        background: url('../images/logo.png') 0 0 no-repeat;
+                    }
+                    
+                    html.ie body.short & {
+                        background: url('../images/logo-sm.png') 0 0 no-repeat;
                     }
                 }
                 
@@ -377,7 +411,7 @@ div {
     }
     
     &.content {
-        padding: 60px 0 0 0;
+        padding: 30px 0 0 0;
         
         div.with-sidebar & {
             margin: 0 0 0 290px;
@@ -457,9 +491,17 @@ div {
         }
     }
     
-    &#pf-header, &#pf-wrapper {
-        position: relative;
-        top: -2.5em;
+    &.breadcrumbs {
+        margin: 0 0 1.8em 0;
+        text-transform: uppercase;
+        font-size: 0.875em;
+        font-family: $headingfont;
+        
+        span.pathway {
+            span {
+                padding: 0 0.3em;
+            }
+        }
     }
     
     &#pf-header {
@@ -490,46 +532,56 @@ div {
             height: auto;
         }
         
-        li.section, li.active_section {
-            a {
-                @include text-shadow(none);
-                padding: 0.4em 1em;
-                border: none;
-                color: $fontcolour;
-                text-transform: uppercase;
-                font-weight: 700;
-                font-size: 0.875em;
-                font-family: $headingfont;
-                line-height: 1.4;
-                
-                &:hover {
-                    background: $mjlightgreen;
-                    color: $hovercolour;
+        li {
+            &.section, &.active_section {
+                a {
+                    @include text-shadow(none);
+                    padding: 0.4em 1em;
+                    border: none;
+                    color: $fontcolour;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 0.875em;
+                    font-family: $headingfont;
+                    line-height: $lineheight;
+                    
+                    &:hover {
+                        color: $hovercolour;
+                        top: 0;
+                    }
+                    
+                    span {
+                        padding: 0.3em 0.5em;
+                        background: none;
+                    }
                 }
-                
-                span {
-                    padding: 0.3em 0.5em;
-                    background: none;
+            }
+            
+            &.section {
+                a {
+                    background: none!important;
+                }
+            }
+            
+            &.active_section {
+                a.pf_nav {
+                    background: $mjgreen!important;
+                    
+                    &:hover {
+                        color: $white;
+                    }
                 }
             }
         }
-        
-        li.active_section {
-            a.pf_nav {
-                background: $mjgreen;
-                
-                &:hover {
-                    color: $white;
-                }
-            }
-        }  
     }
     
     &#pf-wrapper, &#pf-wrapper .moduletable {
+        clear: left;
         border: none;
+        color: $fontcolour;
         font-size: 1em;
         font-family: $bodyfont;
-        line-height: 1.4;
+        line-height: $lineheight;
     }
     
     &#pf-wrapper {
@@ -552,14 +604,17 @@ div {
                 height: auto;
                 
                 &:first-child {
-                    height: 1.9em;
-                }
-            
-                &:first-of-type {
                     @include box-shadow(none);
                     @include border-radius(0);
+                    height: 1.9em;
                     border: none;
-                    background: $mjgreen;
+                    background: $mjgreen;                    
+                            
+                    html.ie & {
+                        ul {
+                            padding: 0.15em 0;
+                        }
+                    }
                     
                     li {
                         a {
@@ -567,11 +622,12 @@ div {
                             @include text-shadow(none);
                             padding: 0.4em 1em;
                             border: none;
+                            background: none!important;
                             text-transform: uppercase;
                             font-weight: 400;
                             font-size: 0.875em;
                             font-family: $headingfont;
-                            line-height: 1.4;
+                            line-height: $lineheight;
                             
                             &:hover {
                                 @include border-radius(0);
@@ -603,6 +659,26 @@ div {
             }
         }
         
+        .inputbox, .myactivity_input, #cdate, #pf_time_panel_note,
+        .pfl_search input, .pf_nav_day input, .pf_nav_year input,
+        .adminform input, #table_body input,
+        #pf_panel_task_comments input.inputbox, 
+        .pf_board input.inputbox, #pf_panel_task_comments textarea.text, 
+        .pf_board textarea.text {
+            @include border-radius(0);
+            @include box-shadow(none);
+            padding: 0.2em 4px;
+            border: 1px solid $mjgreen;
+            background: $bgcolour!important;
+            color: $fontcolour;
+            font-size: 1em;
+            line-height: $lineheight;
+            
+            &:focus {
+                border: 1px solid $fontcolour;
+            }
+        }
+        
         #pf_panel_nav_section li a:hover, .pf_table th.title,
         .pf-panel h3, #pf-body .moduletable h3, #pf-sidebar .return-list a:hover {
             background-color: $mjlightgreen;
@@ -616,12 +692,12 @@ div {
             
             h3 {
                 font-size: 1.3em;
-                line-height: 1.4;
+                line-height: $lineheight;
             }
             
             p {
                 font-size: 1em;
-                line-height: 1.4;
+                line-height: $lineheight;
             }
         }
         
@@ -632,11 +708,43 @@ div {
                 @include box-shadow(none);
                 font-weight: 400;
             }
+            
+            td.item_title {
+                font-size: 1em;
+                font-family: $headingfont;
+                line-height: $lineheight;
+                                
+                a {
+                    color: $fontcolour!important;
+                    font-weight: normal!important;
+                    
+                    &:hover {
+                        color: $hovercolour;
+                    }
+                }
+            }
         }
         
-        #pf_panel_cp_events .pf_table td:hover {
+        .pf_calendar {
+            td {
+                div.event {
+                    width: auto;
+                }
+                
+                table {
+                    width: 100%;
+                }
+                
+                &:hover {
+                    @include box-shadow(none);
+                    background: $mjlightgreen;
+                }
+            }
+        }
+        
+        .pf_priority_cell span {
             @include box-shadow(none);
-            background: $mjlightgreen;
+            @include border-radius(0);        
         }
         
         dl.tabs {
@@ -647,6 +755,7 @@ div {
             dt {
                 @include text-shadow(none);
                 color: $linkcolour;
+                font-weight: 400!important;
                 
                 &.open {
                     border: 1px solid $fontcolour;
@@ -656,16 +765,51 @@ div {
             }
         }
         
-        div.current {
-            border-top: 1px solid $fontcolour;
+        div {
+            &.current {
+                border-top: 1px solid $fontcolour;
+            }
         }
+        
+        .event {
+            @include border-radius(0);
+            @include text-shadow(none);
+            border: none;
+            background: $eventcolour;
+            color: $fontcolour;
+            font-size: 0.875em;
+            
+            a {
+                @include text-shadow(none);
+                color: $fontcolour!important;
+                font-size: 1em;
+                
+                &:hover {
+                    color: $hovercolour!important;
+                }
+            }
+        }
+                
+        .project_event {
+            background: $projectcolour;
+        }
+        
+        .milestone_event {
+            background: $milestonecolour;
+        }
+        
+        .task_event {
+            background: $taskcolour;
+        }
+        
         
         table.admintable {
             td {
                 padding: 0.4em 0.4em 0.4em 0;
+                color: $fontcolour;
+                vertical-align: baseline;
                 
                 &.key {
-                    padding: 0.6em 0.6em 0 0;
                     color: $fontcolour;
                     text-transform: uppercase;
                     white-space: nowrap;
@@ -688,10 +832,6 @@ div {
         
         input[type=text], input[type=password], textarea {
             padding: 0.2em 4px;
-        }
-        
-        input[type=checkbox], input[type=radio] {
-            border: none;
         }
         
         fieldset {
@@ -733,8 +873,12 @@ div {
                         width: 188px;
                         height: 51px;
                         background: url('../images/logo.svg') 0 0 no-repeat;
-                        background-size: 100% 100%;
+                        background-size: 100% 100%; 
                         text-indent: -1000px;
+                        
+                        html.ie & {
+                            background: url('../images/logo.png') 0 0 no-repeat;
+                        }
                     }
                     
                     &.readmore {
@@ -786,6 +930,10 @@ div {
 body.homepage {
     h1 {
         font-size: 2.188em;
+        
+        html.ie &, html.ie9 & {
+            font-size: 2em;
+        }
     }
     
     div {
@@ -801,6 +949,10 @@ body.homepage {
         
         &.content {
             padding: 0;
+        }
+        
+        &.breadcrumbs {
+            display: none;
         }
         
         &.contentpaneopen_edit {

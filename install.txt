@@ -1,0 +1,6 @@
+For the projectfork IFRAME to work edit the following file:
+administrator/components/com_projectform/themes/myproject/index_ajax.php
+
+Add the following to the before the <div class="pf-ajax"> element.
+
+<link type="text/css" rel="stylesheet" href="/templates/mj2014/css/styles.css">
