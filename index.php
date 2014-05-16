@@ -13,7 +13,7 @@ xhtml1/DTD/xhtml1-transitional.dtd">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <jdoc:include type="head" />
-        <meta name="viewport" content="width=980, initial-scale=1">
+        <meta name="viewport" content="width=980">
         <link rel="shortcut icon" href="/templates/mj2014/images/favicon.ico" type="image/vnd.microsoft.icon">
         <link type="text/css" rel="stylesheet" href="/templates/mj2014/css/styles.css">
     </head>
