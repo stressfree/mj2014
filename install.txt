@@ -4,3 +4,16 @@ administrator/components/com_projectform/themes/myproject/index_ajax.php
 Add the following to the before the <div class="pf-ajax"> element.
 
 <link type="text/css" rel="stylesheet" href="/templates/mj2014/css/styles.css">
+
+
+Setup:
+- Modules
+  - Disable footer
+  - Create contact footer
+  - Move modules around
+- Permissions on directories (administrator/cache, cache, documents, files, images, media, tmp)
+- Disable write of configuration.php
+- Remove custom stylesheet in CK editor
+- Clear homepage content
+- Change the ITP Employment Relations link to:
+  /index.php?option=com_content&view=section&layout=blog&id=11&Itemid=100 
