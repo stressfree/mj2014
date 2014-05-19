@@ -11,7 +11,7 @@ Setup:
   - Disable footer
   - Create contact footer
   - Move modules around
-- Permissions on directories (administrator/cache, cache, documents, files, images, media, tmp)
+- Permissions on directories (administrator/cache, cache, documents, files, images, media, tmp, administrator/components/com_datasafepro/DataSAFE_backups)
 - Disable write of configuration.php
 - Remove custom stylesheet in CK editor
 - Clear homepage content
